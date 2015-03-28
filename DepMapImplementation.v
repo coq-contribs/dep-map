@@ -395,10 +395,10 @@ Proof. intros. unfold set, find. simpl. apply S.find_1, S.add_1. reflexivity. Qe
 
 Lemma set_other : forall A x y v dom (m : t A dom) Hin, ¬X.eq y x -> find y (@set A dom x v m Hin) = find y m.
 Proof.
-intros. unfold set, find. simpl. destruct (S.find y (proj1_sig m)) eqn:Hin.
+intros. unfold set, find. simpl. destruct (S.find y (proj1_sig m)) eqn:Hin1.
 + apply S.find_1, S.add_2, S.find_2; trivial. now symmetry.
 + destruct (S.find y (S.add x v (proj1_sig m))) eqn:Hin2; trivial. apply S.find_2, S.add_3, S.find_1 in Hin2.
-  - rewrite Hin in Hin2. discriminate Hin2.
+  - rewrite Hin1 in Hin2. discriminate Hin2.
   - now symmetry.
 Qed.
 
