@@ -27,9 +27,7 @@ Module OTconvert (O : OrderedType) : OrderedType.OrderedType
   Definition eq := O.eq.
   Definition lt := O.lt.
   
-  Theorem eq_refl : forall x : t, eq x x.
-    reflexivity.
-  Qed.
+  Definition eq_refl := reflexivity.
   Lemma eq_sym : forall x y : t, eq x y -> eq y x.
   Proof. intros. now symmetry. Qed. 
   Lemma eq_trans : forall x y z : t, eq x y -> eq y z -> eq x z.
